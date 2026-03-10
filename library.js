@@ -50,23 +50,28 @@ loadLibrary()
 console.log(myLibrary.length)
 
 function showLibrary(){
-    myLibrary.forEach((book,i)=>{
-        let rowsHTML;
-        rowsHTML=`<tr><td>${book.values}</td></tr>`
+    myLibrary.forEach((book,id)=>{
+        
 
-        libraryContainer.innerHTML += `
-    <table>
-        <thead>
-            <th>Book ${i+1}</th>
-        </thead>
-        <tbody>
-            ${rowsHTML}            
-        </tbody>
-    </table>`
-    })
+        libraryContainer.innerHTML += bookCard(book,id)
+        })
 }
 
 
-function bookTable(book,number){
-    book.
+function bookCard(book,number){
+    return `
+    
+    <div id='card-${number+1}' class='book-card'>
+    
+        <h2>#${number+1}  ${book.title}</h2>
+        
+        <image class='book-card-image' src='${book.image}'></image>
+        <p class='book-card-row'>Author: ${book.author}</p>
+        <p class='book-card-row'>Year: ${book.year}</p>
+        <p class='book-card-row'>Pages: ${book.pages}</p>
+        
+        
+    </div>`
 }
+
+showLibrary()
